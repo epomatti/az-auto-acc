@@ -7,11 +7,11 @@ resource "azurerm_automation_account" "default" {
   public_network_access_enabled = true
 }
 
-# resource "azurerm_log_analytics_linked_service" "example" {
-#   resource_group_name = var.resource_group_name
-#   workspace_id        = var.log_analytics_workspace_id
-#   read_access_id      = azurerm_automation_account.default.id
-# }
+resource "azurerm_log_analytics_linked_service" "automation" {
+  resource_group_name = var.resource_group_name
+  workspace_id        = var.log_analytics_workspace_id
+  read_access_id      = azurerm_automation_account.default.id
+}
 
 # # https://stackoverflow.com/a/56210231/3231778
 # resource "azurerm_log_analytics_solution" "example" {
