@@ -49,7 +49,7 @@ resource "azurerm_linux_virtual_machine" "default" {
   }
 
   os_disk {
-    name                 = "osdisk-linux-${var.workload}-${local.vm_affix}"
+    name                 = "osdisk-${var.workload}-${local.vm_affix}"
     caching              = "ReadOnly"
     storage_account_type = "StandardSSD_LRS"
   }
@@ -59,5 +59,9 @@ resource "azurerm_linux_virtual_machine" "default" {
     offer     = "0001-com-ubuntu-server-jammy"
     sku       = "22_04-lts-gen2"
     version   = "latest"
+  }
+
+  tags = {
+    environment = "Production"
   }
 }

@@ -42,3 +42,10 @@ module "vm_windows" {
   subnet_id = module.vnet.subnet_id
   size      = var.vm_size
 }
+
+module "automation" {
+  source              = "./modules/automation"
+  workload            = local.workload
+  resource_group_name = azurerm_resource_group.default.name
+  location            = azurerm_resource_group.default.location
+}

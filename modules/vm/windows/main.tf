@@ -1,5 +1,5 @@
 locals {
-  vm_affix = "linux"
+  vm_affix = "windows"
 }
 
 resource "azurerm_public_ip" "default" {
@@ -30,7 +30,7 @@ locals {
   username = "sysadmin"
 }
 
-resource "azurerm_linux_virtual_machine" "default" {
+resource "azurerm_windows_virtual_machine" "default" {
   name                  = "vm-${var.workload}-${local.vm_affix}"
   resource_group_name   = var.resource_group_name
   location              = var.location
@@ -44,7 +44,7 @@ resource "azurerm_linux_virtual_machine" "default" {
   }
 
   os_disk {
-    name                 = "osdisk-linux-${var.workload}-${local.vm_affix}"
+    name                 = "osdisk-${var.workload}-${local.vm_affix}"
     caching              = "ReadOnly"
     storage_account_type = "StandardSSD_LRS"
   }
@@ -55,4 +55,6 @@ resource "azurerm_linux_virtual_machine" "default" {
     sku       = "2022-datacenter"
     version   = "latest"
   }
+
+
 }

@@ -1,2 +1,3 @@
-# az-auto-acc
-Azure Automation Accounts
+# Azure Automation Accounts
+
+Patching and automating operations on Azure.
