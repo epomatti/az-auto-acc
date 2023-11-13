@@ -1,5 +1,5 @@
 locals {
-  vm_affix = "windows"
+  vm_affix = "win"
 }
 
 resource "azurerm_public_ip" "default" {
@@ -56,5 +56,18 @@ resource "azurerm_windows_virtual_machine" "default" {
     version   = "latest"
   }
 
-
+  tags = {
+    environment = "Production"
+  }
 }
+
+resource "azurerm_virtual_machine_extension" "azure_monitor_windows_agent" {
+  name                       = "monitor-agent"
+  virtual_machine_id         = azurerm_windows_virtual_machine.default.id
+  publisher                  = "Microsoft.Azure.Monitor"
+  type                       = "AzureMonitorWindowsAgent"
+  type_handler_version       = "1.21"
+  auto_upgrade_minor_version = true
+  automatic_upgrade_enabled  = true
+}
+

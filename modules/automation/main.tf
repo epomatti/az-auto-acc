@@ -1,4 +1,4 @@
-resource "azurerm_automation_account" "example" {
+resource "azurerm_automation_account" "default" {
   name                = "aa-${var.workload}"
   location            = var.location
   resource_group_name = var.resource_group_name
@@ -6,3 +6,5 @@ resource "azurerm_automation_account" "example" {
 
   public_network_access_enabled = true
 }
+
+
