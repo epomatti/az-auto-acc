@@ -8,7 +8,7 @@ terraform {
 }
 
 locals {
-  workload = "startup"
+  workload = "myworkload"
 }
 
 resource "azurerm_resource_group" "default" {
