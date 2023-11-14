@@ -57,7 +57,8 @@ resource "azurerm_windows_virtual_machine" "default" {
   }
 
   tags = {
-    environment = "Production"
+    Environment = "Production"
+    OS          = "Windows"
   }
 }
 

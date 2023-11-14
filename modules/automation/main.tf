@@ -51,8 +51,8 @@ resource "azurerm_automation_software_update_configuration" "linux" {
 
   linux {
     classification_included = "Security"
-    excluded_packages       = ["apt"]
-    included_packages       = ["vim"]
+    excluded_packages       = []
+    included_packages       = []
     reboot                  = "IfRequired"
   }
 
@@ -68,6 +68,24 @@ resource "azurerm_automation_software_update_configuration" "linux" {
     description = "Terraform schedule"
     frequency   = "Hour"
     interval    = 1
+  }
+
+  target {
+    azure_query {
+      scope      = [var.resource_group_id]
+      locations  = [var.location]
+      tag_filter = "All"
+
+      tags {
+        tag    = "Environment"
+        values = ["Production"]
+      }
+
+      tags {
+        tag    = "OS"
+        values = ["Linux"]
+      }
+    }
   }
 
 }

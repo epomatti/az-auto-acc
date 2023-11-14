@@ -62,7 +62,8 @@ resource "azurerm_linux_virtual_machine" "default" {
   }
 
   tags = {
-    environment = "Production"
+    Environment = "Production"
+    OS          = "Linux"
   }
 }
 

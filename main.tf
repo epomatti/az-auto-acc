@@ -53,6 +53,7 @@ module "automation" {
   source                       = "./modules/automation"
   workload                     = local.workload
   resource_group_name          = azurerm_resource_group.default.name
+  resource_group_id            = azurerm_resource_group.default.id
   location                     = azurerm_resource_group.default.location
   log_analytics_workspace_id   = azurerm_log_analytics_workspace.default.id
   log_analytics_workspace_name = azurerm_log_analytics_workspace.default.name
