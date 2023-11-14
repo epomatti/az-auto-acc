@@ -4,6 +4,8 @@ Patching and automation operations on Azure with Automation Accounts.
 
 > ℹ️ New patching should be done with Update Manager
 
+<img src=".assets/azure-automation.png" />
+
 Create the infrastructure:
 
 ```sh
