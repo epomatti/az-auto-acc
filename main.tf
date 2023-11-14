@@ -29,7 +29,7 @@ module "vm_linux" {
   resource_group_name = azurerm_resource_group.default.name
   location            = azurerm_resource_group.default.location
   subnet_id           = module.vnet.subnet_id
-  size                = var.vm_size
+  size                = var.linux_vm_size
 }
 
 module "vm_windows" {
@@ -38,7 +38,7 @@ module "vm_windows" {
   resource_group_name = azurerm_resource_group.default.name
   location            = azurerm_resource_group.default.location
   subnet_id           = module.vnet.subnet_id
-  size                = var.vm_size
+  size                = var.windows_vm_size
 }
 
 resource "azurerm_log_analytics_workspace" "default" {
@@ -50,9 +50,10 @@ resource "azurerm_log_analytics_workspace" "default" {
 }
 
 module "automation" {
-  source                     = "./modules/automation"
-  workload                   = local.workload
-  resource_group_name        = azurerm_resource_group.default.name
-  location                   = azurerm_resource_group.default.location
-  log_analytics_workspace_id = azurerm_log_analytics_workspace.default.id
+  source                       = "./modules/automation"
+  workload                     = local.workload
+  resource_group_name          = azurerm_resource_group.default.name
+  location                     = azurerm_resource_group.default.location
+  log_analytics_workspace_id   = azurerm_log_analytics_workspace.default.id
+  log_analytics_workspace_name = azurerm_log_analytics_workspace.default.name
 }

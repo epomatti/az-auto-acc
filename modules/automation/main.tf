@@ -13,19 +13,19 @@ resource "azurerm_log_analytics_linked_service" "automation" {
   read_access_id      = azurerm_automation_account.default.id
 }
 
-# # https://stackoverflow.com/a/56210231/3231778
-# resource "azurerm_log_analytics_solution" "example" {
-#   solution_name         = "ContainerInsights"
-#   location            = var.location
-#   resource_group_name = var.resource_group_name
-#   workspace_resource_id = azurerm_log_analytics_workspace.example.id
-#   workspace_name        = azurerm_log_analytics_workspace.example.name
+# https://stackoverflow.com/a/56210231/3231778
+resource "azurerm_log_analytics_solution" "automation" {
+  solution_name         = "Updates"
+  location              = var.location
+  resource_group_name   = var.resource_group_name
+  workspace_resource_id = var.log_analytics_workspace_id
+  workspace_name        = var.log_analytics_workspace_name
 
-#   plan {
-#     publisher = "Microsoft"
-#     product   = "OMSGallery/ContainerInsights"
-#   }
-# }
+  plan {
+    publisher = "Microsoft"
+    product   = "OMSGallery/Updates"
+  }
+}
 
 # resource "azurerm_log_analytics_saved_search" "example" {
 #   name                       = "exampleSavedSearch"
