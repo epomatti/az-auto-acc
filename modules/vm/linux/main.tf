@@ -68,7 +68,7 @@ resource "azurerm_linux_virtual_machine" "default" {
 }
 
 resource "azurerm_virtual_machine_extension" "azure_monitor_linux_agent" {
-  name                       = "monitor-agent"
+  name                       = "AzureMonitorLinuxAgent"
   virtual_machine_id         = azurerm_linux_virtual_machine.default.id
   publisher                  = "Microsoft.Azure.Monitor"
   type                       = "AzureMonitorLinuxAgent"

@@ -8,7 +8,7 @@ terraform {
 }
 
 locals {
-  workload = "petshop"
+  workload = "todoapp"
 }
 
 resource "azurerm_resource_group" "default" {

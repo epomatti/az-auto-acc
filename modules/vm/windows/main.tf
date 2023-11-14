@@ -63,7 +63,7 @@ resource "azurerm_windows_virtual_machine" "default" {
 }
 
 resource "azurerm_virtual_machine_extension" "azure_monitor_windows_agent" {
-  name                       = "monitor-agent"
+  name                       = "AzureMonitorWindowsAgent"
   virtual_machine_id         = azurerm_windows_virtual_machine.default.id
   publisher                  = "Microsoft.Azure.Monitor"
   type                       = "AzureMonitorWindowsAgent"
