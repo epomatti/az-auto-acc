@@ -33,7 +33,7 @@ resource "azurerm_automation_software_update_configuration" "linux" {
   duration              = "PT2H"
 
   linux {
-    # classification_included = "Security"
+    classification_included = "Security"
     excluded_packages       = []
     included_packages       = []
     reboot                  = "IfRequired"
@@ -63,5 +63,18 @@ resource "azurerm_automation_software_update_configuration" "linux" {
       }
     }
   }
+}
 
+
+resource "azurerm_log_analytics_solution" "change_tracking" {
+  solution_name         = "ChangeTracking"
+  location              = var.location
+  resource_group_name   = var.resource_group_name
+  workspace_resource_id = var.log_analytics_workspace_id
+  workspace_name        = var.log_analytics_workspace_name
+
+  plan {
+    publisher = "Microsoft"
+    product   = "OMSGallery/ChangeTracking"
+  }
 }
