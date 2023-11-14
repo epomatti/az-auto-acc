@@ -27,41 +27,17 @@ resource "azurerm_log_analytics_solution" "automation" {
   }
 }
 
-# resource "azurerm_automation_runbook" "python" {
-#   name                    = "Get-AzureVMTutorial"
-#   location                = var.location
-#   resource_group_name     = var.resource_group_name
-#   automation_account_name = azurerm_automation_account.default.name
-
-#   log_verbose  = "true"
-#   log_progress = "true"
-#   description  = "This is a example runbook for terraform acceptance example"
-#   runbook_type = "Python3"
-
-#   content = <<CONTENT
-# # Some example content
-# # for Terraform acceptance example
-# CONTENT
-# }
-
 resource "azurerm_automation_software_update_configuration" "linux" {
   name                  = "LinuxUpdates"
   automation_account_id = azurerm_automation_account.default.id
   duration              = "PT2H"
 
   linux {
-    classification_included = "Security"
+    # classification_included = "Security"
     excluded_packages       = []
     included_packages       = []
     reboot                  = "IfRequired"
   }
-
-  # pre_task {
-  #   source = azurerm_automation_runbook.python.name
-  #   parameters = {
-  #     COMPUTER_NAME = "Foo"
-  #   }
-  # }
 
   schedule {
     is_enabled  = true
@@ -89,12 +65,3 @@ resource "azurerm_automation_software_update_configuration" "linux" {
   }
 
 }
-
-# resource "azurerm_log_analytics_saved_search" "example" {
-#   name                       = "exampleSavedSearch"
-#   log_analytics_workspace_id = azurerm_log_analytics_workspace.example.id
-
-#   category     = "exampleCategory"
-#   display_name = "exampleDisplayName"
-#   query        = "exampleQuery"
-# }
