@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "3.79.0"
+      version = "3.85.0"
     }
   }
 }
@@ -50,6 +50,7 @@ resource "azurerm_log_analytics_workspace" "default" {
 }
 
 module "automation" {
+  count                        = var.create_automation_resources == true ? 1 : 0
   source                       = "./modules/automation"
   workload                     = local.workload
   resource_group_name          = azurerm_resource_group.default.name

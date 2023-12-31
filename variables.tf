@@ -1,14 +1,15 @@
 variable "location" {
-  type    = string
-  default = "brazilsouth"
+  type = string
 }
 
 variable "linux_vm_size" {
-  type    = string
-  default = "Standard_B2ms"
+  type = string
 }
 
 variable "windows_vm_size" {
-  type    = string
-  default = "Standard_B4ms"
+  type = string
+}
+
+variable "create_automation_resources" {
+  type = bool
 }

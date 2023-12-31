@@ -52,7 +52,7 @@ resource "azurerm_windows_virtual_machine" "default" {
   source_image_reference {
     publisher = "MicrosoftWindowsServer"
     offer     = "WindowsServer"
-    sku       = "2022-datacenter"
+    sku       = "2022-datacenter-g2"
     version   = "latest"
   }
 

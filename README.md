@@ -6,6 +6,12 @@ Patching and automation operations on Azure with Automation Accounts.
 
 <img src=".assets/azure-automation.png" width=700 />
 
+Set the `.auto.tfvars` file:
+
+```sh
+cp config/template.tfvars .auto.tfvars
+```
+
 Create the infrastructure:
 
 ```sh
