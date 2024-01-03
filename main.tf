@@ -59,3 +59,10 @@ module "automation" {
   log_analytics_workspace_id   = azurerm_log_analytics_workspace.default.id
   log_analytics_workspace_name = azurerm_log_analytics_workspace.default.name
 }
+
+module "storage" {
+  source              = "./modules/storage"
+  workload            = local.workload
+  resource_group_name = azurerm_resource_group.default.name
+  location            = azurerm_resource_group.default.location
+}

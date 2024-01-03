@@ -65,7 +65,6 @@ resource "azurerm_automation_software_update_configuration" "linux" {
   }
 }
 
-
 resource "azurerm_log_analytics_solution" "change_tracking" {
   solution_name         = "ChangeTracking"
   location              = var.location
@@ -77,4 +76,19 @@ resource "azurerm_log_analytics_solution" "change_tracking" {
     publisher = "Microsoft"
     product   = "OMSGallery/ChangeTracking"
   }
+}
+
+
+### Runbook ###
+resource "azurerm_automation_runbook" "rotate" {
+  name                    = "New-AzStorageAccountKey"
+  location                = var.location
+  resource_group_name     = var.resource_group_name
+  automation_account_name = azurerm_automation_account.default.name
+  log_verbose             = "true"
+  log_progress            = "true"
+  description             = "Rotate the storage account key"
+  runbook_type            = "PowerShell72"
+
+  content = file("${path.module}/runbook.ps1")
 }

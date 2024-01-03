@@ -31,4 +31,9 @@ Inventory and change tracking are also enabled via Terraform:
 
 <img src=".assets/azure-automation-inventory.png" />
 
+## Runbook
+
+A PowerShell 7.2 runbook is created to rotate Storage Account keys.
+
+
 [1]: https://learn.microsoft.com/en-us/azure/automation/update-management/operating-system-requirements?tabs=os-linux%2Csr-win#supported-operating-systems
